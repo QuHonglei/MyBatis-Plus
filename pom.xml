@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>com.itheibai</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>MyBatis-Plus</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
-    <description>demo</description>
+    <name>MyBatis-Plus</name>
+    <description>MyBatis-Plus-Demo</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
