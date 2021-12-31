@@ -19,7 +19,7 @@ spring:
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver #com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource #自定义数据源
       #SpringBoot 默认配置是不注入这些属性值的，需要自己绑定
-      #druid 数据源专有配置
+    #druid 数据源专有配置
     druid:
       initialSize: 5
       minIdle: 5

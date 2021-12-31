@@ -22,7 +22,6 @@ public class MyJavaTest {
         System.out.println("(new生成的Integer 100.equals(100) ? )equals : " + n7.equals(n8));
 
 
-
         //非new生成的两个Integer变量，做 == 比较时，如果两个变量的值在区间 -128到127之间，结果为 true,否则为 false
         //当在IDEA中开启代码检测的时候，会提示你将 == 替换为 equals
         System.out.println("(非new生成的Integer 100 == 100 ? )== : " + (a1 == a2));

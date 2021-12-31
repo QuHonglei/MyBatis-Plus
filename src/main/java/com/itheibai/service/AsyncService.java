@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class AsyncService {
 
     @Async
-    public void hello(){
+    public void hello() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {

@@ -38,6 +38,8 @@ class DemoApplicationTests {
 //    }
 
     @Autowired
+    JavaMailSenderImpl mailSender;
+    @Autowired
     private UserMapper userMapper;
 
     @Test
@@ -54,7 +56,7 @@ class DemoApplicationTests {
     public void testWrapper5() {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         // id 在子查询中查出来
-        wrapper.inSql("id","select id from user where id<3");
+        wrapper.inSql("id", "select id from user where id<3");
         List<Object> objects = userMapper.selectObjs(wrapper);
         objects.forEach(System.out::println);
     }
@@ -64,8 +66,8 @@ class DemoApplicationTests {
     public void testWrapper4() {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         // 左和右 t%
-        wrapper.notLike("name","a")
-                .likeRight("email","t");
+        wrapper.notLike("name", "a")
+                .likeRight("email", "t");
         List<Map<String, Object>> maps = userMapper.selectMaps(wrapper);
         maps.forEach(System.out::println);
     }
@@ -74,7 +76,7 @@ class DemoApplicationTests {
     public void testWrapper3() {
         // 查询年龄在 20 ~ 30 岁之间的用户
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.between("age",20,30); // 区间
+        wrapper.between("age", 20, 30); // 区间
         Long count = userMapper.selectCount(wrapper); // 查询结果数
         System.out.println(count);
     }
@@ -83,7 +85,7 @@ class DemoApplicationTests {
     public void testWrapper2() {
         // 查询名字itheibai
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.eq("name","itheibai");
+        wrapper.eq("name", "itheibai");
         User user = userMapper.selectOne(wrapper); // 查询一个数据，出现多个结果使用List 或者 Map
         System.out.println(user);
     }
@@ -94,7 +96,7 @@ class DemoApplicationTests {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.isNotNull("name")
                 .isNotNull("email")
-                .ge("age",12);
+                .ge("age", 12);
         userMapper.selectList(wrapper).forEach(System.out::println); // 和我们刚才学习的map对比一下
     }
 
@@ -102,8 +104,8 @@ class DemoApplicationTests {
     @Test
     public void testDeleteMap() {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("name","itheibai");
-        map.put("age",2);
+        map.put("name", "itheibai");
+        map.put("age", 2);
 
         userMapper.deleteByMap(map);
     }
@@ -111,7 +113,7 @@ class DemoApplicationTests {
     // 测试id批量删除
     @Test
     public void testDeleteBatchId() {
-        userMapper.deleteBatchIds(Arrays.asList(1473902116184969222L,1473902116184969221L));
+        userMapper.deleteBatchIds(Arrays.asList(1473902116184969222L, 1473902116184969221L));
     }
 
     // 测试删除
@@ -126,7 +128,7 @@ class DemoApplicationTests {
         // 参数一：当前页
         // 参数二：页面大小
         // 使用了分页插件之后，所有的分页操作也变得简单的！
-        Page<User> page = new Page<>(2,5);
+        Page<User> page = new Page<>(2, 5);
         userMapper.selectPage(page, null);
 
         page.getRecords().forEach(System.out::println);
@@ -158,7 +160,6 @@ class DemoApplicationTests {
         User user = userMapper.selectById(1L);
         System.out.println(user);
     }
-
 
     // 测试查询
     @Test
@@ -227,10 +228,6 @@ class DemoApplicationTests {
         System.out.println(result); // 受影响的行数
         System.out.println(user); // 发现，id会自动回填
     }
-
-
-    @Autowired
-    JavaMailSenderImpl mailSender;
 
     @Test
     void contextLoads1() {

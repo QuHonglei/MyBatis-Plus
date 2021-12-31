@@ -39,8 +39,8 @@ public class ItheibaiCode {
                             .xml("mapper") // Xml 包名，默认包名 mapper.xml
                             .controller("controller") // Controller 包名
                             .other("other") // other 包名
-                            .pathInfo(Collections.singletonMap(OutputFile.mapper,projectPath + "/src/main/java/com/itheibai/sys/dao")) // 配置mapper生成路径
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml,projectPath + "/src/main/resources/mapper")); // 配置mapper.xml生成路径,springboot会默认扫描
+                            .pathInfo(Collections.singletonMap(OutputFile.mapper, projectPath + "/src/main/java/com/itheibai/sys/dao")) // 配置mapper生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, projectPath + "/src/main/resources/mapper")); // 配置mapper.xml生成路径,springboot会默认扫描
                 })
                 .strategyConfig(builder -> {
                     builder.addInclude("t_user_pojo") // 增加表匹配
@@ -55,7 +55,7 @@ public class ItheibaiCode {
                             .logicDeletePropertyName("deleted") // 逻辑删除属性名（实体）
                             .addIgnoreColumns("age") // 添加忽略字段
                             .addTableFills(new Column("create_time", FieldFill.INSERT))
-                            .addTableFills(new Column("update_time",FieldFill.INSERT_UPDATE))
+                            .addTableFills(new Column("update_time", FieldFill.INSERT_UPDATE))
                             .idType(IdType.AUTO) // 全局主键类型
                             .serviceBuilder()
                             //.superServiceClass(BaseService.class) // 设置接口类的父类
